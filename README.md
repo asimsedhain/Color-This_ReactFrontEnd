@@ -23,7 +23,7 @@
 </p>
 
 
-![screen_shot.jpg](screen_shot.jpg)
+![screen_shot.jpg](https://github.com/asimsedhain/Color-This/raw/master/screen_shot.jpg)
 
 
 ## [Demo](http://color-this.eastus.cloudapp.azure.com/)
@@ -77,7 +77,7 @@ const imageId = (await response.json()).imageId;
 ```
 
 ## System Architecture
-![system_architecture.jpg](system_architecture.jpg)
+![system_architecture.jpg](https://github.com/asimsedhain/Color-This/raw/master/system_architecture.jpg)
 
 Our system follows a simple producer-consumer model. Static files and file uploads are handled by a Node server. When a file is uploaded, the Node server pushes the image into the Redis queue and returns an image ID to the client. On the other end, a Python worker is listening for jobs from the Redis queue. When there a job arrives, the worker processes the job and uploads the processed image to the MongoDB. The client can then retrieve the final image by using the image ID. 
 
