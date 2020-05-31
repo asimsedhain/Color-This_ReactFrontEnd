@@ -8,6 +8,7 @@ import "./style/colors.css"
 import modelIcon from "./components/model.svg"
 import limitIcon from "./components/limit.svg"
 import futureIcon from "./components/future.svg"
+import githubIcon from "./components/github.svg"
 // const webport = "http://color-this.eastus.cloudapp.azure.com/upload"
 // const webport = "http://localhost/upload"
 const webport = "/upload"
@@ -116,7 +117,7 @@ class App extends Component {
 				<DisplayText sty="white" content={limitation} icon={limitIcon} iconOrder={1}/>
 				<DisplayText sty="light" content={future_plans} icon={futureIcon} />
 				<footer>
-					<div className="container-fluid yellow text-center text-light p-4">Copyright &copy; Ashim Sedhain
+					<div className="container-fluid yellow text-center text-light p-4">Copyright &copy; Ashim Sedhain | <img src={githubIcon} alt=""/>
 					</div>
 				</footer>
 			</div >
