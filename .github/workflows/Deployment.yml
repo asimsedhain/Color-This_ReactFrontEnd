@@ -24,7 +24,7 @@ jobs:
     - name: Install Node packages
       run: npm install
     - name: Building the app
-      run: npm build
+      run: npm run-script build
     - name: Deploying to Aruze
       uses: tibor19/static-website-deploy@v1
       with:
