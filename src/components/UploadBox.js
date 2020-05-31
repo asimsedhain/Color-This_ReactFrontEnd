@@ -7,7 +7,7 @@ function UploadBox(props) {
 
 		<Row>
 			<Col sm="9" md="7" lg="5" className="mx-auto">
-				<Card className="my-3" style={{ borderRadius: 0 }}>
+				<Card className="my-3" style={{ borderRadius: 5}}>
 					<CardHeader tag="h5" className="text-center bg-light text-dark">Colorize Your Image</CardHeader>
 					<CardBody>
 						<CardText tag="h5" className="text-secondary">Submit Your Image</CardText>
@@ -26,7 +26,7 @@ function UploadBox(props) {
 								<Row>
 									{props.exampleImages.map((image)=>
 										<Col key={image.id}>
-										<img src={image.src}  alt="Sample" style={image.selected? {borderRadius:0}:{filter: "grayscale(100%)", borderRadius:0}} className="img-thumbnail" onClick={props.handleExampleImageClick.bind(this, image.id)} ></img>
+										<img src={image.src}  alt="Sample" style={image.selected? {borderRadius:5}:{filter: "grayscale(100%)", borderRadius:5}} className="img-thumbnail" onClick={props.handleExampleImageClick.bind(this, image.id)} ></img>
 										</Col>
 									)}
 								
