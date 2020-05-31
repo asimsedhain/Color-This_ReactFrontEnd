@@ -9,8 +9,7 @@ import modelIcon from "./components/model.svg"
 import limitIcon from "./components/limit.svg"
 import futureIcon from "./components/future.svg"
 import githubIcon from "./components/github.svg"
-// const webport = "http://color-this.eastus.cloudapp.azure.com/upload"
-// const webport = "http://localhost/upload"
+
 const webport = "/upload"
 
 class App extends Component {
