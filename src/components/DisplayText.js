@@ -35,7 +35,7 @@ function DisplayText(props) {
 		
 		return (<Col className={`col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 pb-sm-0 ${order} order-0`}>
 			<div className="d-flex justify-content-center">
-				<img src={icon} height="100%" width="100%" className="col-6 col-sm-12" />
+				<img src={icon} height="100%" width="100%" className="col-6 col-sm-12" alt=""/>
 			</div>
 		</Col>)
 	}

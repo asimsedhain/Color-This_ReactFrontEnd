@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Navbar, NavbarText, Row, Col } from "reactstrap";
+import { Container, Navbar, NavbarText} from "reactstrap";
 import UploadBox from "./components/UploadBox";
 import DisplayImage from "./components/DisplayImage";
 import DisplayText from "./components/DisplayText";
