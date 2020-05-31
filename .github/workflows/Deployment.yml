@@ -1,0 +1,33 @@
+# Continuous Deployment
+
+name: Deployment to Azure Blob Storage
+
+# Only runs when code is pushed to master
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  
+  Deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest     
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2 
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Node packages
+      run: npm install
+    - name: Building the app
+      run: npm build
+    - name: Deploying to Aruze
+      uses: tibor19/static-website-deploy@v1
+      with:
+        enabled-static-website: 'true'
+        folder: 'build'
+        connection-string: ${{ secrets.CONNECTION_STRING }}
