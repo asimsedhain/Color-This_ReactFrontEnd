@@ -20,10 +20,14 @@
 		</a>
 			<img src="https://github.com/asimsedhain/Color-This/workflows/Continious%20Integration/badge.svg?event=push" />
 	</p>
+	<p align="center">
+	<kbd>
+		<img src="https://github.com/asimsedhain/Color-This/raw/master/screen_shot.jpg" />
+	</kbd>
+	</p>
 </p>
 
 
-![screen_shot.jpg](https://github.com/asimsedhain/Color-This/raw/master/screen_shot.jpg)
 
 
 ## [Demo](http://color-this.eastus.cloudapp.azure.com/)
