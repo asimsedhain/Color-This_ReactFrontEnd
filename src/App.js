@@ -10,7 +10,7 @@ import limitIcon from "./components/limit.svg"
 import futureIcon from "./components/future.svg"
 import githubIcon from "./components/github.svg"
 
-const webport = "/upload"
+const webport = "https://colorthis.azurewebsites.net/upload"
 
 class App extends Component {
 
