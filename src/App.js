@@ -116,7 +116,7 @@ class App extends Component {
 				<DisplayText sty="white" content={limitation} icon={limitIcon} iconOrder={1}/>
 				<DisplayText sty="light" content={future_plans} icon={futureIcon} />
 				<footer>
-					<div className="container-fluid yellow text-center text-light p-4">Copyright &copy; Ashim Sedhain | <img src={githubIcon} alt=""/>
+					<div className="container-fluid yellow text-center text-light p-4">Copyright &copy; Ashim Sedhain <a href="https://github.com/asimsedhain"><img src={githubIcon} alt=""/></a>
 					</div>
 				</footer>
 			</div >
