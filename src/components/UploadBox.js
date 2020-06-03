@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Card, CardBody, CardHeader, CardText } from "reactstrap";
+import { Element } from "react-scroll";
 
 function UploadBox(props) {
 
@@ -7,7 +8,7 @@ function UploadBox(props) {
 
 		<Row>
 			<Col sm="9" md="7" lg="5" className="mx-auto">
-				<Card className="my-3" style={{ borderRadius: 5}}>
+				<Card className="my-3" style={{ borderRadius: 5 }}>
 					<CardHeader tag="h5" className="text-center bg-light text-dark">Colorize Your Image</CardHeader>
 					<CardBody>
 						<CardText tag="h5" className="text-secondary">Submit Your Image</CardText>
@@ -23,14 +24,17 @@ function UploadBox(props) {
 							<CardText tag="h5" className="text-secondary">Or, Try a Sample Image</CardText>
 
 							<div className="d-flex" style={{ borderRadius: 0 }}>
-								<Row>
-									{props.exampleImages.map((image)=>
-										<Col key={image.id}>
-										<img src={image.src}  alt="Sample" style={image.selected? {borderRadius:5}:{filter: "grayscale(100%)", borderRadius:5}} className="img-thumbnail" onClick={props.handleExampleImageClick.bind(this, image.id)} ></img>
-										</Col>
-									)}
-								
-								</Row>
+								<Element name="SampleImages">
+									<Row>
+										{props.exampleImages.map((image) =>
+											<Col key={image.id}>
+												<img src={image.src} alt="Sample" style={image.selected ? { borderRadius: 5 } : { filter: "grayscale(100%)", borderRadius: 5 }} className="img-thumbnail" onClick={props.handleExampleImageClick.bind(this, image.id)} ></img>
+											</Col>
+										)}
+
+									</Row>
+
+								</Element>
 							</div>
 						</div>
 					</CardBody>

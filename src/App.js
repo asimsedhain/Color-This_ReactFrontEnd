@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Navbar, NavbarText} from "reactstrap";
+import { Container, Navbar, NavbarText } from "reactstrap";
+import { scroller } from "react-scroll";
+
 import UploadBox from "./components/UploadBox";
 import DisplayImage from "./components/DisplayImage";
 import DisplayText from "./components/DisplayText";
@@ -37,7 +39,7 @@ class App extends Component {
 		e.preventDefault();
 
 		if (this.state.selectedFile) {
-
+			this.scrollToImage();
 			this.setState({
 				inputValue: "",
 				imageState: 1,
@@ -88,6 +90,7 @@ class App extends Component {
 	// Handle the event of example image click
 	handleExampleImageClick = (id) => {
 		if (id !== this.state.imageId) {
+			this.scrollToImage()
 			this.setState({
 				imageId: id,
 				imageState: 1,
@@ -96,6 +99,16 @@ class App extends Component {
 			clearInterval(this.loadImageInterval)
 			this.loadImageInterval = setInterval(() => this.loadImage(true), 1000);
 		}
+	}
+	
+	// Function for scolling after image upload or sample image click
+	scrollToImage = () => {
+		scroller.scrollTo("SampleImages", {
+			duration: 1500,
+			deplay: 100,
+			smooth: true,
+			offset: -50
+		})
 	}
 
 	render() {
@@ -112,11 +125,11 @@ class App extends Component {
 					<UploadBox uploadImage={this.uploadImage} handleImageChange={this.handleImageChange} inputValue={this.state.inputValue} exampleImages={this.state.exampleImages} handleExampleImageClick={this.handleExampleImageClick} />
 					<DisplayImage imageState={this.state.imageState} colorURL={this.state.colorURL} originalURL={this.state.originalURL} />
 				</Container>
-				<DisplayText sty="yellow" content={our_model} style={{ backgroundColor: "#EBF2FA" }} icon={modelIcon}/>
-				<DisplayText sty="white" content={limitation} icon={limitIcon} iconOrder={1}/>
+				<DisplayText sty="yellow" content={our_model} style={{ backgroundColor: "#EBF2FA" }} icon={modelIcon} />
+				<DisplayText sty="white" content={limitation} icon={limitIcon} iconOrder={1} />
 				<DisplayText sty="light" content={future_plans} icon={futureIcon} />
 				<footer>
-					<div className="container-fluid yellow text-center text-light p-4">Copyright &copy; Ashim Sedhain <a href="https://github.com/asimsedhain"><img src={githubIcon} alt=""/></a>
+					<div className="container-fluid yellow text-center text-light p-4"><a href="https://github.com/asimsedhain" style={{ "color": "white" }}>Copyright &copy; Ashim Sedhain <img src={githubIcon} alt="" /></a>
 					</div>
 				</footer>
 			</div >
