@@ -104,8 +104,8 @@ class App extends Component {
 	// Function for scolling after image upload or sample image click
 	scrollToImage = () => {
 		scroller.scrollTo("SampleImages", {
-			duration: 1500,
-			deplay: 100,
+			duration: 1000,
+			deplay: 50,
 			smooth: true,
 			offset: -50
 		})
