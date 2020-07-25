@@ -58,6 +58,7 @@ class App extends Component {
 				this.scrollToImage();
 				this.setState({
 					inputValue: "",
+					imageState: 1,
 					exampleImages: this.state.exampleImages.map((image) => ({
 						...image,
 						selected: false,
