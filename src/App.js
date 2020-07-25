@@ -13,6 +13,7 @@ import futureIcon from "./components/future.svg";
 import githubIcon from "./components/github.svg";
 
 const webport = "https://colorthis.azurewebsites.net/upload";
+const MAX_TIMEOUT= 30
 
 class App extends Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ class App extends Component {
 			selectedFile: null,
 			inputValue: "",
 			imageState: 0,
+			timer: MAX_TIMEOUT,
 			imageId: null,
 			colorURL: null,
 			originalURL: null,
@@ -56,7 +58,6 @@ class App extends Component {
 				this.scrollToImage();
 				this.setState({
 					inputValue: "",
-					imageState: 1,
 					exampleImages: this.state.exampleImages.map((image) => ({
 						...image,
 						selected: false,
@@ -65,22 +66,28 @@ class App extends Component {
 
 				const response = await fetch(`${webport}/url`, {
 					method: "POST",
-					headers:{"Content-Type": "application/json"},
-					body: JSON.stringify({ url: this.state.inputValue })
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ url: this.state.inputValue }),
 				});
+
 				if (response.status !== 200) {
 					this.setState({
-						imageState:0
-					})
+						imageState: 4,
+					});
 					return;
+				} else {
+					this.setState({
+						imageState: 1,
+					});
 				}
+
 				const imageId = (await response.json()).imageId;
 
 				this.setState({
 					selectedFile: null,
 					imageId: imageId,
 				});
-
+				this.setState({ timer: MAX_TIMEOUT });
 				this.loadImageInterval = setInterval(this.loadImage, 1000);
 			}
 		} else {
@@ -104,9 +111,13 @@ class App extends Component {
 
 				if (response.status !== 200) {
 					this.setState({
-						imageState:0
-					})
+						imageState: 4,
+					});
 					return;
+				} else {
+					this.setState({
+						imageState: 1,
+					});
 				}
 
 				const imageId = (await response.json()).imageId;
@@ -117,6 +128,7 @@ class App extends Component {
 				});
 
 				// Sets and interval to call the function loadimage every second to see if the image has been processed.
+				this.setState({ timer: MAX_TIMEOUT });
 				this.loadImageInterval = setInterval(this.loadImage, 1000);
 			}
 		}
@@ -129,7 +141,7 @@ class App extends Component {
 		const colorResponse = await fetch(
 			`${webport}/color?id=${this.state.imageId}&skipDictionary=${skipDictionary}`
 		);
-
+		this.setState({ timer: this.state.timer - 1 });
 		if (colorResponse.status === 200) {
 			const originalResponse = await fetch(
 				`${webport}/original?id=${this.state.imageId}&skipDictionary=${skipDictionary}`
@@ -138,6 +150,12 @@ class App extends Component {
 				imageState: 2,
 				colorURL: URL.createObjectURL(await colorResponse.blob()),
 				originalURL: URL.createObjectURL(await originalResponse.blob()),
+			});
+			clearInterval(this.loadImageInterval);
+		}
+		if (this.state.timer <= 0) {
+			this.setState({
+				imageState: 5,
 			});
 			clearInterval(this.loadImageInterval);
 		}
